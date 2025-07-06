@@ -41,12 +41,12 @@ INSERT INTO club_member_info_cleanned
 SELECT * FROM club_member_info;
 ```
 ### Cleaned full_name column
-
+```sql
 UPDATE club_member_info_cleanned cmic ed SET full_name = TRIM(full_name);
 UPDATE club_member_info_cleanned cmic ed SET full_name = UPPER(full_name);
 UPDATE club_member_info_clean SET full_name = REPLACE(REPLACE(full_name, '!', ''), '?', '')
 WHERE full_name LIKE '%!%' OR full_name LIKE '%?%';
-
+```
 The results:
 |full_name|
 |---------|
