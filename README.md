@@ -204,4 +204,39 @@ the results:
 |3/12/2021|
 |11/5/2014|
 
+# Remove Duplicates - Lecture 8: Subqueries. SQL quality-of-life rules
+## Retrieve duplicates
+```sql
+SELECT ROWID, * FROM club_member_info_cleanned
+WHERE email IN (
+	SELECT email FROM club_member_info_cleanned
+	GROUP BY email 
+	HAVING COUNT(*) > 1
+)
+ORDER BY email;
+```
+=> In the first 20 rows, there are 15 duplicate rows, and only 5 unique (non-duplicate) rows.
+
+|rowid|full_name|age|martial_status|email|phone|full_address|job_title|membership_date|
+|-----|---------|---|--------------|-----|-----|------------|---------|---------------|
+|221|ARDA ALLAM|36|married|aallam64@nps.gov|415 797 9281|86 Sunfield Parkway,San Rafael,California|Human Resources Assistant I|1/10/2012|
+|2231|ARDA ALLAM|36|married|aallam64@nps.gov|415 797 9281|86 Sunfield Parkway,San Rafael,California|Human Resources Assistant I|1/10/2012|
+|4241|ARDA ALLAM|36|married|aallam64@nps.gov|415 797 9281|86 Sunfield Parkway,San Rafael,California|Human Resources Assistant I|1/10/2012|
+|6251|ARDA ALLAM|36|married|aallam64@nps.gov|415 797 9281|86 Sunfield Parkway,San Rafael,California|Human Resources Assistant I|1/10/2012|
+|789|AERIELL ANGELINI|32|married|aangelinilu@whitehouse.gov|806 508 7374|UnKnown|Database Administrator I|7/10/2013|
+|2799|AERIELL ANGELINI|32|married|aangelinilu@whitehouse.gov|806 508 7374|UnKnown|Database Administrator I|7/10/2013|
+|4809|AERIELL ANGELINI|32|married|aangelinilu@whitehouse.gov|806 508 7374|UnKnown|Database Administrator I|7/10/2013|
+|6819|AERIELL ANGELINI|32|married|aangelinilu@whitehouse.gov|806 508 7374|UnKnown|Database Administrator I|7/10/2013|
+|199|AURORE AVERILL|28|married|aaverill5i@theglobeandmail.com|713 330 3502|42107 Debs Court,Houston,Texas|Account Coordinator|5/11/2019|
+|2209|AURORE AVERILL|28|married|aaverill5i@theglobeandmail.com|713 330 3502|42107 Debs Court,Houston,Texas|Account Coordinator|5/11/2019|
+|4219|AURORE AVERILL|28|married|aaverill5i@theglobeandmail.com|713 330 3502|42107 Debs Court,Houston,Texas|Account Coordinator|5/11/2019|
+|6229|AURORE AVERILL|28|married|aaverill5i@theglobeandmail.com|713 330 3502|42107 Debs Court,Houston,Texas|Account Coordinator|5/11/2019|
+|866|ANNEMARIE BALSOM|52|divorced|abalsomny@wired.com|718 247 6744|723 Caliangt Park,Jamaica,New York|Design Engineer|3/6/2014|
+|2876|ANNEMARIE BALSOM|52|divorced|abalsomny@wired.com|718 247 6744|723 Caliangt Park,Jamaica,New York|Design Engineer|3/6/2014|
+|4886|ANNEMARIE BALSOM|52|divorced|abalsomny@wired.com|718 247 6744|723 Caliangt Park,Jamaica,New York|Design Engineer|3/6/2014|
+|6896|ANNEMARIE BALSOM|52|divorced|abalsomny@wired.com|718 247 6744|723 Caliangt Park,Jamaica,New York|Design Engineer|3/6/2014|
+|1923|ALICEA BAMELL|52|married|abamellpc@squidoo.com|850 167 7028|UnKnown|Help Desk Technician|9/14/2021|
+|3933|ALICEA BAMELL|52|married|abamellpc@squidoo.com|850 167 7028|UnKnown|Help Desk Technician|9/14/2021|
+|5943|ALICEA BAMELL|52|married|abamellpc@squidoo.com|850 167 7028|UnKnown|Help Desk Technician|9/14/2021|
+|7953|ALICEA BAMELL|52|married|abamellpc@squidoo.com|850 167 7028|UnKnown|Help Desk Technician|9/14/2021|
 
