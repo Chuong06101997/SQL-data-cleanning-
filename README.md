@@ -107,3 +107,101 @@ The results:
 |single|
 |married|
 
+### Cleaned phone column
+```sql
+UPDATE club_member_info_cleanned SET phone = REPLACE(phone, '-', ' ');
+UPDATE club_member_info_cleaned SET phone = 'Unknown'
+WHERE phone  = '';
+```
+The Results:
+|phone|
+|-----|
+|254 389 8708|
+|910 566 2007|
+|702 187 8715|
+|402 688 7162|
+|917 394 6001|
+|937 467 6942|
+|513 726 9885|
+|616 617 0965|
+|504 918 4753|
+|808 177 0318|
+|203 993 0118|
+|805 968 3034|
+|612 914 2658|
+|702 364 0009|
+|608 659 4566|
+
+### Cleaned job_title column
+```sql
+UPDATE club_member_info_cleanned
+SET job_title = 'Unknown'
+WHERE job_title   = '';
+```
+
+|job_title|
+|---------|
+|Assistant Professor|
+|Programmer III|
+|Budget/Accounting Analyst I|
+|Desktop Support Technician|
+|Legal Assistant|
+|Human Resources Assistant IV|
+|Accountant IV|
+|Research Nurse|
+|Systems Administrator III|
+|Chemical Engineer|
+|Chemical Engineer|
+|Programmer I|
+|Business Systems Development Analyst|
+
+
+### full_address
+```sql
+UPDATE club_member_info_cleaned 
+SET full_address = 'UnKnown'
+WHERE full_address LIKE '0%';
+```
+The results:
+|full_address|
+|------------|
+|3226 Eastlawn Pass,Temple,Texas|
+|4 Harbort Avenue,Fayetteville,North Carolina|
+|4 School Place,Las Vegas,Nevada|
+|6 Monument Crossing,Omaha,Nebraska|
+|88 Cherokee Pass,New York City,New York|
+|10864 Buhler Plaza,Hamilton,Ohio|
+|733 Hagan Parkway,Cincinnati,Ohio|
+|975 Dwight Plaza,Grand Rapids,Michigan|
+|34 Delladonna Terrace,New Orleans,Louisiana|
+|8976 Jackson Park,Honolulu,Hawaii|
+|2254 Express Hill,New Haven,Connecticut|
+|UnKnown|
+|61 Blue Bill Park Plaza,Minneapolis,Minnesota|
+
+
+### Cleaned membership_date
+```sql
+UPDATE club_member_info_cleanned
+SET membership_date = REPLACE(membership_date, '1,9', '2,0')
+WHERE membership_date LIKE '1,9%';
+
+UPDATE club_member_info_cleanned
+SET membership_date = REPLACE(membership_date, '/19', '/20')
+WHERE membership_date LIKE '%/19__'; 
+```
+the results:
+|membership_date|
+|---------------|
+|7/31/2013|
+|5/27/2018|
+|10/6/2017|
+|10/20/2015|
+|5/29/2019|
+|3/24/2015|
+|4/17/2013|
+|11/16/2014|
+|3/12/2021|
+|11/5/2014|
+
+
