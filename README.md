@@ -59,6 +59,51 @@ The results:
 |JOANN KENEALY|
 |JOETE CUDIFF|
 
+### Clean Age colummn
+```sql
+UPDATE club_member_info_cleanned
+SET age =
+	CASE
+		WHEN LENGTH(age) > 2
+		THEN SUBSTR(age, 1, LENGTH(age) - 1)
+		ELSE age 
+	END;
+```
+The results:
+|age|
+|---|
+|40|
+|46|
+|35|
+|38|
+|44|
+|41|
+|51|
+|52|
+|42|
+|29|
 
+### Cleaned martial_status column
+```SQL
+UPDATE club_member_info_cleanned
+SET martial_status = 'Unknown'
+WHERE martial_status = '';
+UPDATE club_member_info_cleanned
+SET martial_status = 'divorced'
+WHERE martial_status = 'divored';
+```
+The results:
 
+|martial_status|
+|--------------|
+|married|
+|married|
+|divorced|
+|Unknown|
+|married|
+|single|
+|married|
+|divorced|
+|single|
+|married|
 
